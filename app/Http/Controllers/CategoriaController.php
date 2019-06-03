@@ -15,6 +15,9 @@ class CategoriaController extends Controller
     public function index()
     {
         //
+        /*
+        $categorias=Categoria::all();
+        return view('software.categoria.index');*/
     }
 
     /**
@@ -25,6 +28,7 @@ class CategoriaController extends Controller
     public function create()
     {
         //
+        return view('software.categoria.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre'=>'required|max:30',
+        ]);
+        $categoria= new Categoria($request->all());
+        dd($categoria);
+        $categoria->save();
+        \Flash::success("Se ha <strong>Registrado</strong> la Categoría =><strong>".$categoria->nombre."</strong> de forma exitosa!");
+        return redirect('categoria');
     }
 
     /**

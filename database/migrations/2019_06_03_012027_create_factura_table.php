@@ -17,7 +17,6 @@ class CreateFacturaTable extends Migration
             $table->increments('id');
             $table->date('fecha');
             $table->integer('monto')->unsigned();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
