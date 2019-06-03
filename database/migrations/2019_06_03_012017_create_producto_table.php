@@ -17,6 +17,9 @@ class CreateProductoTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('precio')->unsigned();
+            $table->integer('id_categoria')->unsigned();
+            $table->foreign('id_categoria')->references('id')->on('categoria')
+                    ->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
