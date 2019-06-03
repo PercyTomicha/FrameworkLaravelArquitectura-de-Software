@@ -14,7 +14,6 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
         $categorias=Categoria::all();
         return view('software.categoria.index',compact('categorias'));
     }
@@ -26,7 +25,6 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
         return view('software.categoria.create');
     }
 
