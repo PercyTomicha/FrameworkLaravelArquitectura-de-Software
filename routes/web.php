@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('principal');
 });
+Route::resource('categoria','CategoriaController');
+Route::resource('producto','ProductoController');
+Route::resource('factura','FacturaController');
