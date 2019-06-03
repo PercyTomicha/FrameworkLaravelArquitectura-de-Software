@@ -76,7 +76,7 @@
                     @endif
                 </div>
             @endif
-
+            @yield('content')
             <div class="content">
                 <div class="title m-b-md">
                     Arquitectura de Software 1-2019

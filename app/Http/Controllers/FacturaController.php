@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Factura;
+use App\DetalleVenta;
+use App\Producto;
 
 class FacturaController extends Controller
 {
