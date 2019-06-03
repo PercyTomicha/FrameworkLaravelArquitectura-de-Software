@@ -15,9 +15,8 @@ class CategoriaController extends Controller
     public function index()
     {
         //
-        /*
         $categorias=Categoria::all();
-        return view('software.categoria.index');*/
+        return view('software.categoria.index',compact('categorias'));
     }
 
     /**
@@ -43,7 +42,6 @@ class CategoriaController extends Controller
             'nombre'=>'required|max:30',
         ]);
         $categoria= new Categoria($request->all());
-        dd($categoria);
         $categoria->save();
         \Flash::success("Se ha <strong>Registrado</strong> la Categoría =><strong>".$categoria->nombre."</strong> de forma exitosa!");
         return redirect('categoria');
@@ -68,7 +66,8 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoria=Categoria::find($id);
+        return view('software.categoria.edit',compact('categoria'));
     }
 
     /**
@@ -80,7 +79,13 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nombre'=>'required|max:30',
+        ]);
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($request->all());
+        \Flash::success("Se ha <strong>Actualizado</strong> la Categoría =><strong>".$categoria->nombre."</strong> de forma exitosa!");
+        return redirect('categoria');
     }
 
     /**
@@ -91,6 +96,9 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        Categoria::destroy($id);
+        \Flash::success("Se ha <strong>Eliminado</strong> la Categoría =><strong>".$categoria->nombre."</strong> de forma exitosa!");
+        return redirect('categoria');
     }
 }
